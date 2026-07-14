@@ -3,9 +3,128 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Rimuru Tempest Login</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #6dd5ed, #1b2b57 60%);
+        color: #eef7ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .login-card {
+        background: rgba(18, 34, 67, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        width: 360px;
+        padding: 36px;
+        text-align: center;
+      }
+
+      .login-card h1 {
+        margin: 0 0 12px;
+        font-size: 2rem;
+        letter-spacing: 1px;
+      }
+
+      .login-card p {
+        margin: 0 0 28px;
+        color: #b8d8ff;
+        font-size: 0.95rem;
+      }
+
+      .login-card .icon {
+        font-size: 4rem;
+        margin-bottom: 14px;
+        display: inline-block;
+      }
+
+      .login-card label {
+        display: block;
+        text-align: left;
+        margin: 16px 0 6px;
+        font-size: 0.9rem;
+        color: #c9e4ff;
+      }
+
+      .login-card input {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
+        color: #f1f9ff;
+        font-size: 1rem;
+        outline: none;
+        box-sizing: border-box;
+      }
+
+      .login-card input:focus {
+        border-color: #72d0ff;
+        background: rgba(114, 208, 255, 0.12);
+      }
+
+      .login-card button {
+        width: 100%;
+        margin-top: 24px;
+        padding: 14px 0;
+        border: none;
+        border-radius: 14px;
+        background: linear-gradient(135deg, #72d0ff, #2f8cf3);
+        color: #08204f;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .login-card button:hover {
+        transform: translateY(-1px);
+        background: linear-gradient(135deg, #96e4ff, #3a95ff);
+      }
+
+      .login-card .footer {
+        margin-top: 20px;
+        font-size: 0.85rem;
+        color: #91bfe4;
+      }
+    </style>
   </head>
   <body>
-    <p>:Hello There</p>
+    <div class="login-card">
+      <div class="icon">🔷</div>
+      <h1>Rimuru Login</h1>
+      <p>Enter your credentials and awaken the power of Tempest.</p>
+      <form>
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Rimuru"
+          autocomplete="username"
+        />
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="********"
+          autocomplete="current-password"
+        />
+        <button type="submit">Summon</button>
+      </form>
+      <div class="footer">
+        Inspired by the Great Sage and the spirit of Rimuru Tempest.
+      </div>
+    </div>
   </body>
 </html>
