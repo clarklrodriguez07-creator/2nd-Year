@@ -5,7 +5,6 @@ class Main {
     public static void main(String[] args) {
     boolean loop=true;  
     int choice=0;
-    String again;
     
     Employee[] employee=new Employee[100];
        
@@ -291,7 +290,6 @@ static void delete(Employee[] employee, Scanner in){
 }
  
 static void displayAll(Employee[] employee){
-    String again;
   
     if(i==0){
         return;
