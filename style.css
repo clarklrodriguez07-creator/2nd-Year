@@ -1,7 +1,178 @@
-.body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    color: #333;
-    background-color: #ff0000;
-    height: 100vh;
+/* Basic reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+  line-height: 1.5;
+  color: #111827;
+  background: #f8fafc;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 1rem;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.5rem;
+}
+p {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+.nav a {
+  color: #1f2937;
+  text-decoration: none;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+}
+.nav a:hover {
+  background: rgba(15, 23, 42, 0.06);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn.secondary {
+  background: #94a3b8;
+}
+.btn:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.2);
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #e6edf3;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+}
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Responsive grid */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+.grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 720px) {
+  .grid.cols-2,
+  .grid.cols-3 {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Utility classes */
+.muted {
+  color: #6b7280;
+}
+.text-center {
+  text-align: center;
+}
+.spaced {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Small accessible focus for interactive elements */
+a,
+button {
+  transition: all 150ms ease;
+}
+
+/* Footer */
+.footer {
+  padding: 1rem 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* Helpful defaults for code blocks */
+pre {
+  background: #0f172a;
+  color: #e6edf3;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+/* End of style.css */
