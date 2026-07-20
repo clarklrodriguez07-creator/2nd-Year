@@ -5,13 +5,13 @@ class clark{
         int num;
 
         for(int i=0;i<5;i++){
-            System.out.println("Enter a number");
+            System.out.print("Enter a number: ");
             num=in.nextInt();
             if(num%2==0){
-                System.out.println("Even");
+                System.out.println("Number "+ num+" is Even");
             }
             else{
-                System.out.println("Odd");
+                System.out.println("Number "+ num+" is Odd");
             }
         }
     }
