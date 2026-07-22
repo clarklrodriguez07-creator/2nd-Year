@@ -11,8 +11,10 @@ class clark{
             System.out.println("2. Exit");
             System.out.print("Choice: ");
             choice = in.nextInt();
-        if(choice==1){
-            for(int i=0;i<5;i++){
+
+            switch(choice){
+                case 1:
+                    for(int i=0;i<5;i++){
                 System.out.print("Enter a number: ");
                 num=in.nextInt();
                 if(num%2==0){
@@ -20,15 +22,16 @@ class clark{
                 }
                 else{
                     System.out.println("Number "+ num+" is Odd");
-                }   
+                    }   
+                }
+                break;
+                case 2:
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+                    break;
             }
-        }
-        else if(choice==2){
-            System.out.println("Exiting the program.");
-        }
-        else{
-            System.out.println("Invalid choice. Please try again.");
-        }
     }while(choice!=2);
   }
 }
