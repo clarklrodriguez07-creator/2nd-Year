@@ -6,8 +6,9 @@ class clark{
 
         do{
             System.out.println("Menu:");
-            System.out.println("1. ADD Number");
-            System.out.println("2. Exit");
+            System.out.println("1. ADD");
+            System.out.println("2. Search");
+            System.out.println("3. Exit");
             System.out.print("Choice: ");
             choice = in.nextInt();
 
@@ -16,13 +17,15 @@ class clark{
                         add();
                 break;
                 case 2:
+                        search();
+                case 3:
                     System.out.println("Exiting the program.");
                     break;
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
-        }while(choice!=2);
+        }while(choice!=3);
     }
 
   static void add(){
@@ -38,4 +41,18 @@ class clark{
                     }   
                 }
             }
+
+    static void search(){
+        int num2;
+
+        System.out.print("Enter a number: ");
+        num2=clark.in.nextInt();
+        for(int i=0;i<5;i++){
+            if(num2==i){
+                System.out.println("Number is found.");
+            }else{
+                System.out.println("Number is not found.");
+                    }   
+                }
+            }        
 }
