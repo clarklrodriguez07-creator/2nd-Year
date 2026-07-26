@@ -1,6 +1,7 @@
 import java.util.*;
 class clark{
     public static Scanner in=new Scanner(System.in);
+    public static int num[]=new int[5];
     public static void main(String args[]){
         int choice=0;
 
@@ -29,12 +30,11 @@ class clark{
     }
 
   static void add(){
-        int num;
         for(int i=0;i<5;i++){
             System.out.print("Enter a number: ");
-            num=clark.in.nextInt();
-            if(num%2==0){
-                System.out.println("Number "+ num+" is Even");
+            num[i]=clark.in.nextInt();
+            if(num[i]%2==0){
+                System.out.println("Number "+ num[i]+" is Even");
             }
                 else{
                     System.out.println("Number "+ num+" is Odd");
@@ -48,11 +48,12 @@ class clark{
         System.out.print("Enter a number: ");
         num2=clark.in.nextInt();
         for(int i=0;i<5;i++){
-            if(num2==i){
+            if(num2==num[i]){
                 System.out.println("Number is found.");
-            }else{
-                System.out.println("Number is not found.");
-                    }   
-                }
-            }        
-}
+                return;
+            }
+        }
+        System.out.println("Number is not found.");
+    }        
+            
+}        
