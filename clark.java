@@ -49,11 +49,11 @@ class clark{
         num2=clark.in.nextInt();
         for(int i=0;i<5;i++){
             if(num2==num[i]){
-                System.out.println("Number is found.");
+                System.out.println("Number "+ num2 +" is found.");
                 return;
             }
         }
-        System.out.println("Number is not found.");
+        System.out.println("Number "+ num2 +" is not found.");
     }        
             
 }        
