@@ -19,3 +19,9 @@ a, b, c = fruit
 print(a)   
 print(b)
 print(c)
+
+print("If 10 - 5 is greater than 3")    
+if 10 - 5 > 3:
+    print("True")
+else:
+    print("False")
