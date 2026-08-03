@@ -24,4 +24,4 @@ print("If 10 - 5 is greater than 3")
 if 10 - 5 > 3:
     print("True")
 else:
-    print("False")
+    print("None of the above")
