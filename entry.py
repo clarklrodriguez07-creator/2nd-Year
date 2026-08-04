@@ -25,3 +25,6 @@ if 10 - 5 > 3:
     print("True")
 else:
     print("None of the above")
+
+name = input("What is your name? ")
+print("Hello " +name+"!")
