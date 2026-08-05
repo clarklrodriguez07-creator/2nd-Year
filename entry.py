@@ -28,3 +28,4 @@ else:
 
 name = input("What is your name? ")
 print("Hello " +name+"!")
+job = input("What do you do for a living? ")
