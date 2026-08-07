@@ -30,3 +30,7 @@ name = input("What is your name? ")
 print("Hello " +name+"!")
 job = input("What do you do for a living? ")
 input("Does it fully cover all your expenses? (yes/no): ")
+if input == 'yes':
+    print("So you have a nc job huh. Good for you.")
+else:
+    print("Minimum wage earner you should be ashamed of yourself. Get a better job.")
