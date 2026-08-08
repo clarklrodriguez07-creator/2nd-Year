@@ -34,3 +34,11 @@ if input == 'yes':
     print("So you have a nc job huh. Good for you.")
 else:
     print("Minimum wage earner you should be ashamed of yourself. Get a better job.")
+
+# Create a list of fruits
+fruits = ["apple", "banana", "cherry", "date", "elderberry"]
+
+# Use a for loop to iterate through the list
+for i, fruit in enumerate(fruits):
+    print(f"Index {i}: {fruit}")
+    
