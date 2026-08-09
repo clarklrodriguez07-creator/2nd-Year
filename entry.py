@@ -29,9 +29,9 @@ else:
 name = input("What is your name? ")
 print("Hello " +name+"!")
 job = input("What do you do for a living? ")
-input("Does it fully cover all your expenses? (yes/no): ")
-if input == 'yes':
-    print("So you have a nc job huh. Good for you.")
+expense_coverage = input("Does it fully cover all your expenses? (yes/no): ")
+if expense_coverage == 'yes':
+    print("So you have a nice job huh. Good for you.")
 else:
     print("Minimum wage earner you should be ashamed of yourself. Get a better job.")
 
@@ -41,4 +41,5 @@ fruits = ["apple", "banana", "cherry", "date", "elderberry"]
 # Use a for loop to iterate through the list
 for i, fruit in enumerate(fruits):
     print(f"Index {i}: {fruit}")
-    
+
+print("Show me new code to learn after for loop and if else statement")
