@@ -9,3 +9,5 @@ if job == "student":
     print("You should focus on your studies.")
 else:
     print("You should work hard to achieve your goals.")
+
+print("I'm learning new stuffs in w3school i'll just put this new line of code out here to learn new stuffs in python.")
