@@ -11,3 +11,8 @@ else:
     print("You should work hard to achieve your goals.")
 
 print("I'm learning new stuffs in w3school i'll just put this new line of code out here to learn new stuffs in python.")
+submit=input("Do you want to submit your information? (yes/no) ")
+if submit.lower() == "yes":
+    print("Thank you for submitting your information!")
+else:
+    print("You chose not to submit your information. Goodbye!") 
