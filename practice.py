@@ -16,3 +16,5 @@ if submit.lower() == "yes":
     print("Thank you for submitting your information!")
 else:
     print("You chose not to submit your information. Goodbye!") 
+
+print("The error should be fixed by now. Let's see if it works now.")
