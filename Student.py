@@ -26,3 +26,7 @@ section = input("Enter Section: ")
 student = Student(student_id, lastname, firstname, mi, course, section)
 print("\nStudent Information:")
 student.display_info()
+
+student2 = Student("2021002", "Doe", "Jane", "B", "BSIT", "2A")
+print("\nStudent 2 Information:")
+student2.display_info()
