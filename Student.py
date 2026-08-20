@@ -37,3 +37,5 @@ section = input("Enter Section: ")
 student2 = Student(student_id, lastname, firstname, mi, course, section)
 print("\nStudent 2 Information:")
 student2.display_info()
+
+print("Kakaboy ba ani")
