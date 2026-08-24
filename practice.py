@@ -1,27 +1,5 @@
-print("Hellow Fellow Human!")
-name=input("What is your name? ")
-print("Hello " + name + "!")   
-age=input("How old are you? ")
-print("You are " + age + " years old.")
-job=input("What do you do for a living? ")
-print("So you are a " + job + ".")
-if job == "student":
-    print("You should focus on your studies.")
-else:
-    print("You should work hard to achieve your goals.")
+a = int(input("First number: "))
+b = int(input("Second number: "))
 
-print("I'm learning new stuffs in w3school i'll just put this new line of code out here to learn new stuffs in python.")
-submit=input("Do you want to submit your information? (yes/no) ")
-if submit.lower() == "yes":
-    print("Thank you for submitting your information!")
-else:
-    print("You chose not to submit your information. Goodbye!") 
-
-print("The error should be fixed by now. Let's see if it works now.")
-
-print("Tommorow Monday, It will either be have a class or the orientation will start and all us 2nd year will not have class")
-event=input("What is the event for tomorrow? ")
-if event == "class":
-    print("We will have class tomorrow.")
-else:  
-    print("The orientation will start tomorrow and we will not have class.")
+c = a + b
+print(c)
