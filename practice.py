@@ -1,36 +1,31 @@
-emfla = 375
-unit = int(input("Emergency flashlight purchased: "))
+from array import *
 
-if unit <= 30:
-    total = unit * emfla
-    discount = total * .10
-    discounted = total - discount
-    if discounted > 12000:
-        add = discounted * .05
-        final = discounted - add
+company = array('i', [])
+commision = array('f', [])
+
+size = int(input("Enter Size: "))
+for i in range(size):
+    sales = int(input("Enter Sales: "))
+    company.append(sales)
+
+for i in range(size):
+    if company[i] >= 100000:
+        commision.append(company[i] * 0.10)
+    elif company[i] >= 50000:
+        commision.append(company[i] * 0.07)
+    elif company[i] >= 20000:
+        commision.append(company[i] * 0.05)
     else:
-        add = 0
-        final = discounted
+        commision.append(company[i] * 0.02)
 
-    if final > 15000:
-        vat = final * .12
-    else:
-        vat = final * .08
+for i in range(size):
+    print(f"\nSales: {company[i]} Commission: {commision[i]}")        
 
-    final = final + vat       
+s = int(input("\nEnter number to search: "))
 
+for i in range(size):
+    if s == company[i]:
+        print(f"Index found at {i}")
+        break
 else:
-    total = unit * emfla
-    discount = total * .10
-    discounted = total - discount
-    add = 0
-    final = discounted
-    vat = final * .08
-    final = final + vat
-
-
-print("Total:", total)
-print("Discount:", discount)
-print("Additional Discount:", add)
-print("VAT:", vat)
-print("Final Price:", final)
+    print("Index not found.")
