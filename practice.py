@@ -1,35 +1,27 @@
 from array import *
 
-company = array('i', [])
-commision = array('f', [])
+responder_names = ['Juan Cruz', 'Maria Santos', 'Pedro Reyes', 'Ana Garcia', 'Leo Mendoza']
+contact_numbers = ["09171234567", "09184567890", "09981234567", "09351234567", "09271234567"]
 
-size = int(input("Enter Size: "))
-for i in range(size):
-    sales = int(input("Enter Sales: "))
-    company.append(sales)
+for i in range(5):
+    name = input("Enter responder name: ")
+    number = input("Enter contact number: ")
+    responder_names.append(name)
+    contact_numbers.append(number)
 
-for i in range(size):
-    if company[i] >= 100000:
-        commision.append(company[i] * 0.10)
-    elif company[i] >= 50000:
-        commision.append(company[i] * 0.07)
-    elif company[i] >= 20000:
-        commision.append(company[i] * 0.05)
-    else:
-        commision.append(company[i] * 0.02)
+print("\nEmergency Contact Directory")
 
-for i in range(size):
-    print(f"\nSales: {company[i]} Commission: {commision[i]}")        
+for i in range(len(responder_names)):
+    print(f"Responder Name: {responder_names[i]}, Contact Number: {contact_numbers[i]}")
 
-s = int(input("\nEnter number to search: "))
+search = input("Enter responder name to search: ")
 
-for i in range(size):
-    if s == company[i]:
-        print(f"Index found at {i}")
-        break
-else:
-    print("Index not found.")
+found = False
 
+for i in range(len(responder_names)):
+    if responder_names[i].lower() == search.lower():
+         print(f"Contact Number for {responder_names[i]}: {contact_numbers[i]}")
+         found = True
 
-print("Add a loop??")
-print("Katjg eys")
+if found == False:
+    print("Responder not found.")
