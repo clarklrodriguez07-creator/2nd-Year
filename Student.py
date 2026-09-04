@@ -1,41 +1,26 @@
-class Student:
+from array import *
+grade = []
 
-    def __init__(self, student_id, lastname, firstname, mi, course, section):
-        self.student_id = student_id
-        self.lastname = lastname
-        self.firstname = firstname
-        self.mi = mi
-        self.course = course
-        self.section = section
+row = int(input("Enter number of students: "))
+col = int(input("Enter number of subjects: "))
+print()
+for i in range(row):
+    grade.append([])
+    for j in range(col):
+        grade[i].append(int(input(f"Student {i+1}, Subject {j+1}: ")))
 
-    def display_info(self):
-        print("Student ID: " + self.student_id)
-        print("Last Name: " + self.lastname)
-        print("First Name: " + self.firstname)
-        print("Middle Initial: " + self.mi)
-        print("Course: " + self.course)
-        print("Section: " + self.section)
+print()
+for i in range(row):
+    for j in range(col):
+        print(grade[i][j], end=" ")
 
-student_id = input("Enter Student ID: ")
-lastname = input("Enter Last Name: ")
-firstname = input("Enter First Name: ")
-mi = input("Enter Middle Initial: ")
-course = input("Enter Course: ")
-section = input("Enter Section: ")
-
-student = Student(student_id, lastname, firstname, mi, course, section)
-print("\nStudent Information:")
-student.display_info()
-
-student_id = input("\nEnter Student ID: ")
-lastname = input("Enter Last Name: ")
-firstname = input("Enter First Name: ")
-mi = input("Enter Middle Initial: ")
-course = input("Enter Course: ")
-section = input("Enter Section: ")
-
-student2 = Student(student_id, lastname, firstname, mi, course, section)
-print("\nStudent 2 Information:")
-student2.display_info()
-
-print("Kakaboy ba ani")
+        if 90 <= grade[i][j] <= 100:
+            print("Excellent")
+        elif 80 <= grade[i][j] <= 89:
+            print("Very Good")
+        elif 75 <= grade[i][j] <= 79:
+            print("Passed")
+        elif 0 <= grade[i][j] < 75:
+            print("Failed")
+        else:
+            print("Invalid grade")
