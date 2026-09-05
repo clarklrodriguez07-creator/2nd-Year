@@ -43,3 +43,13 @@ for i, fruit in enumerate(fruits):
     print(f"Index {i}: {fruit}")
 
 print("Show me new code to learn after for loop and if else statement")
+
+#to print a 2d array do this
+store = []
+row = int(input("Number of rows: "))
+col = int(input("Number of columns: "))
+
+for i in range(row):
+    store.append([])
+    for j in range(col):
+        store[i].append(int(input(f"Enter value for row {i+1}, column {j+1}: ")))
