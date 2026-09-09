@@ -24,3 +24,6 @@ for i in range(row):
             print("Failed")
         else:
             print("Invalid grade")
+
+
+print("Kapoya na asdasda")
