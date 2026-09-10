@@ -1,10 +1,18 @@
-class Calculator:
-    
-    def __init__(self, num1, num2):
-        self.num1 = num1
+class Calculator:#class
+    secret = "Secret"#class attribute
+    def __init__(self, num1, num2):#init constructor
+        self.num1 = num1#instance variable
         self.num2 = num2   
     
-    def add(self):
+    @classmethod
+    def get_secret(cls):#class method
+        return cls.secret
+    @staticmethod
+    def greet():#static method
+        return "Welcome to the Simple Calculator!"
+
+
+    def add(self):#instance method
         return self.num1 + self.num2
     def subtract(self):
         return self.num1 - self.num2
@@ -20,7 +28,9 @@ class Calculator:
         return self.num1 // self.num2
     
 
-while True:    
+while True:   
+    #create an object example
+    calc = Calculator(0, 0)#object being created 
     print("=========================")   
     print("    SIMPLE CALCULATOR")  
     print("=========================")   
