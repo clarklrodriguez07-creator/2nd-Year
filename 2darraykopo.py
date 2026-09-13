@@ -175,3 +175,27 @@ while True:
     #then...
 #then...
 #that's it
+
+#to append a 2d array
+#pattern is example
+#numbers = [] this is the 2d array initialize it
+#for i in range(3): this is the first loop
+    #row = [] this is the row to append to the 2d array
+    #for j in range(3): this is the second loop
+        #row.append(int(input("Enter number: "))) this is the input to append to the row
+    #numbers.append(row) this is to append the row to the 2d array
+
+#that is the normal loop to input one variable but what if it's multiple?
+#pizzastore = []
+#while True:
+    # code for adding orders to pizzastore
+    #name = input("Enter name: ")
+    #flavor = input("Enter flavor: ")
+    #size = input("Enter size: ")
+    #quantity = int(input("Enter quantity: "))
+
+    #order = [name, flavor, size, quantity]
+    #pizzastore.append(order)
+    #break
+
+#that's how you use it on a 2d array
