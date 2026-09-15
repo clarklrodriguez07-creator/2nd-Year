@@ -5,7 +5,8 @@ while True:
     print("1. Add Order")
     print("2. Search Order")
     print("3. Display All Orders")
-    print("4. Exit")
+    print("4. Delete Order")
+    print("5. Exit")
     choice = input("Enter your choice: ")
 
     if choice == "1":
@@ -159,6 +160,17 @@ while True:
                 print(f"Total Price: {pizzashop[i][5]}")
 
     elif choice == "4":
+            search = input("Enter Order ID to Delete: ")
+            for i in range(len(pizzashop)):
+                if pizzashop[i][0] == search:
+                    del pizzashop[i][j]
+                    print("\nOrder deleted successfully!")
+                    break
+            else:
+                print("\nOrder not found.")
+
+
+    elif choice == "5":
         print("Thank you for using PIZZA SHOP SA GWAPO!")
         break
 
