@@ -214,3 +214,5 @@ while True:
 #that's how you use it on a 2d array
 #done
 #so tired
+
+#new lesson learned encapsulation and data hiding getter and setter property
