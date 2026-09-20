@@ -163,7 +163,7 @@ while True:
             search = input("Enter Order ID to Delete: ")
             for i in range(len(pizzashop)):
                 if pizzashop[i][0] == search:
-                    del pizzashop[i][j]
+                    del pizzashop[i]
                     print("\nOrder deleted successfully!")
 
                     break
