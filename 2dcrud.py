@@ -118,3 +118,5 @@ for i in range(branch):
         print(f"Interest Rate: {loan[i][j][2]}%")
         print(f"Interest Amount: {loan[i][j][3]}")
         print(f"Total Payment: {loan[i][j][4]}")
+
+#GOODLUCK TOMMOROW ASSESSMENT MYSELF
