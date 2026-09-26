@@ -29,8 +29,8 @@ while True:
                 totalpayment = amount + interest
 
                 result = [amount, term, interest, totalpayment]
-            sample.append(result)
-        loan.append(sample) 
+                sample.append(result)
+            loan.append(sample) 
 
     elif choice == 2:       
         search1 = float(input("\nSearch Loan Amount: "))
@@ -98,14 +98,13 @@ while True:
         for i in range(branch):
             print(f"\nBranch {i + 1}")
             for j in range(len(loan[i])):
-                print(f"Customer {j + 1}")
-                print(f"Loan Amount: {loan[i][j][0]}")
+                print(f"Customer {j + 1} Loan Amount: {loan[i][j][0]}")
                 
     elif choice == 6:
         print("Exiting the program.")
         break
     else:
-        print("That is not a valid choice. Please try again.")
+        print("Invalid Choice. Please try again.")
 
 #GOODLUCK TOMMOROW ASSESSMENT MYSELF
 #2d array crud martes while True Menu
