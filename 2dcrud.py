@@ -110,3 +110,4 @@ while True:
 #2d array crud martes while True Menu
 #reviewing this code for 10 mins today all good!
 #idk but kapoy kaayo akong lawas subaw unta maayo para balik og code burnout ko
+#nabalik na gamay ang energy mag code review ta for tommorow assessment goodluck myself!
