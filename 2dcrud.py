@@ -113,3 +113,4 @@ while True:
 #nabalik na gamay ang energy mag code review ta for tommorow assessment goodluck myself!
 #success!!! 10/10 assessment
 #linklist next kaya ni!!
+#no internet sala sa globe practice nlng ko
