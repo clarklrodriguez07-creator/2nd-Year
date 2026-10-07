@@ -1,6 +1,6 @@
 rows = int(input("Enter Rows: "))
 columns = int(input("Enter Columns: "))
-
+#frth day tom
 practice = []
 
 for i in range(rows):
