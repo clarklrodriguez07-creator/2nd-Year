@@ -3,6 +3,8 @@ customer = int(input("Enter Number of Customers: "))
 print()
 loan = []
 
+print("Hello Clark")
+
 while True:
     print("Menu \n1. Add \n2. Search \n3. Update \n4. Delete \n5. Display \n6. Exit")
     choice = int(input("Enter your choice: "))
