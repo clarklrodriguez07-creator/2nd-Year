@@ -4,16 +4,26 @@ def add():
     while True:
         sample = []
         id = int(input("\nEnter Id: "))
-        name = input("Enter Name: ")
-        age = int(input("Enter Age: "))
-        section = input("Enter Section: ")
-        store = [id, name, age, section]
-        sample.append(id)
-        sample.append(name)
-        sample.append(age)
-        sample.append(section)
-        practice.append(sample)
-        break
+        for i in range(len(practice)):
+            if id == practice[i][0]:
+                print("Student with this ID already exists.")
+                break
+        else:
+            name = input("Enter Name: ")
+            age = int(input("Enter Age: "))
+            section = input("Enter Section: ")
+            sample.append(id)
+            sample.append(name)
+            sample.append(age)
+            sample.append(section)
+            practice.append(sample)
+            break
+
+        again = input("Another Transaction?[yes/no]: ")
+        if again.lower() != "yes":
+            break
+        else:
+            continue
 
 def search():
     search_id = int(input("Search Id: "))
