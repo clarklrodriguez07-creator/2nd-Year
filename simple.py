@@ -19,11 +19,11 @@ def add():
             practice.append(sample)
             break
 
-        again = input("Another Transaction?[yes/no]: ")
-        if again.lower() != "yes":
-            break
-        else:
+        again = input("Another Transaction?[yes/otherwise no]: ")
+        if again.lower().strip() == yes
             continue
+        else:
+            break
 
 def search():
     search_id = int(input("Search Id: "))
