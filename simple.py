@@ -57,3 +57,5 @@ for i in range(len(practice)):
     print(f"Student {i+1}:")
     for j in range(len(practice[i])):
         print(f"{practice[i][j]}")
+
+#tulog
