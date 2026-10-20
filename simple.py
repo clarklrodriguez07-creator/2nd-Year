@@ -59,3 +59,4 @@ for i in range(len(practice)):
         print(f"{practice[i][j]}")
 
 #tulog
+#already practice in spider wish me luck in the midterms!
