@@ -20,7 +20,7 @@ def add():
             break
 
         again = input("Another Transaction?[yes/otherwise no]: ")
-        if again.lower().strip() == yes
+        if again.lower().strip() == "yes":
             continue
         else:
             break
