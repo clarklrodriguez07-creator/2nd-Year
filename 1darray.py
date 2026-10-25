@@ -150,3 +150,4 @@ def main():
 if __name__ == "__main__":
 	main()
 #secret
+#no python today but practice css on other folder
