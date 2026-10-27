@@ -53,9 +53,41 @@ def update():
                 practice[i][3] = new_section
                 print("Student information updated successfully.")
 
-for i in range(len(practice)):
-    print(f"Student {i+1}:")
-    for j in range(len(practice[i])):
-        print(f"{practice[i][j]}")
+def display():
+    for i in range(len(practice)):
+        print(f"Student {i+1}:")
+        for j in range(len(practice[i])):
+            print(f"{practice[i][j]}")
+
+def pyramid():
+    n = int(input("Enter the number of rows for the pyramid: "))
+    for i in range(n):
+        print(' ' * (n - i - 1) + '*' * (2 * i + 1))
+
+while True:
+    print("\n1. Add Student")
+    print("2. Search Student")
+    print("3. Update Student")
+    print("4. Display All Students")
+    print("5. ***")
+    print("6. Exit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == '1':
+        add()
+    elif choice == '2':
+        search()
+    elif choice == '3':
+        update()
+    elif choice == '4':
+        display()
+    elif choice == '5':
+        pyramid()
+    elif choice == '6':
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid choice. Please try again.")
 
 #Done midterm ez project and hands on
