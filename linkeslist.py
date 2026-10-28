@@ -77,3 +77,5 @@ if __name__ == "__main__":
 	numbers.delete(10)
 	print("After deleting 10:", end=" ")
 	numbers.display()  # 5 -> 20
+
+#activity making tom
