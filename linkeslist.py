@@ -79,3 +79,4 @@ if __name__ == "__main__":
 	numbers.display()  # 5 -> 20
 
 #activity making tom
+#linklist practice today no need for practice in vs
