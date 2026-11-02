@@ -37,6 +37,25 @@ class Clarkie:
             current = current.next
             index += 1
         return None
+    
+    def update(self, old, new):
+        current = self.head
+        while current:
+            if current.data == old:
+                current.data = new
+                print(f"Updated: {old} to {new}")
+            current = current.next
+        print(f"Element {old} not found.")
+
+    def display(self):
+        current = self.head
+        if current is None:
+            print("List is empty.")
+            return
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
 
 def main():
     meter = Clarkie()
@@ -48,7 +67,7 @@ def main():
     amount = Clarkie()
 
     while True:
-        print("\nMenu:\n1. Insert Data\n2. Search Data\n3. Exit")
+        print("\nMenu:\n1. Insert Data\n2. Search Data\n3. Update Data\n4. Display Data\n5. Exit")
         choice = int(input("Choice: "))
 
         if choice == 1:
@@ -118,6 +137,26 @@ def main():
                     print("No Corresponding data found in the other list.")
 
         elif choice == 3:
+            old = int(input("Enter the Meter No to update: "))
+            new = int(input("Enter the new Meter No: "))
+            meter.update(old, new)
+        elif choice == 4:
+            print("\n--- Displaying All Lists (Top to Bottom) ---")
+            print("Meter Nos:     ", end="")
+            meter.display()
+            print("Present:       ", end="")
+            present.display()
+            print("Previous:      ", end="")
+            previous.display()
+            print("Register Type: ", end="")
+            register.display()
+            print("Principal:     ", end="")
+            principal.display()
+            print("VAT:           ", end="")
+            vat.display()
+            print("Total Amount:  ", end="")
+            amount.display()
+        elif choice == 5:
             print("Exited Successfully")
             break
         else:
