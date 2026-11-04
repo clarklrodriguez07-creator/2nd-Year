@@ -38,23 +38,25 @@ class Clarkie:
             index += 1
         return None
     
-    def update(self, old, new):
+    def update(self, position, new_value):
         current = self.head
+        index = 0
         while current:
-            if current.data == old:
-                current.data = new
-                print(f"Updated: {old} to {new}")
+            if index == position:
+                current.data = new_value
+                return
             current = current.next
-        print(f"Element {old} not found.")
+            index += 1
 
     def display(self):
         current = self.head
         if current is None:
-            print("List is empty.")
+            print("None")
             return
         while current:
-            print(current.data, end=" -> ")
+            print(current.data)
             current = current.next
+
         print("None")
 
 def main():
@@ -137,25 +139,88 @@ def main():
                     print("No Corresponding data found in the other list.")
 
         elif choice == 3:
-            old = int(input("Enter the Meter No to update: "))
-            new = int(input("Enter the new Meter No: "))
-            meter.update(old, new)
+            num = int(input("Enter the Meter No to update: "))
+            position = meter.search(num)
+
+            if position != -1:
+                p = float(input("Enter new Present Reading: "))
+                pr = float(input("Enter new Previous Reading: "))
+                t = input("Enter new Type of Registration: ").lower().strip()
+                
+                consumpt = p - pr
+
+                if consumpt < 72:
+                    charge = 2.50
+                elif consumpt <= 150:
+                    charge = 3.50
+                elif consumpt <= 300:
+                    charge = 4.50
+                elif consumpt <= 400:
+                    charge = 5.50
+                elif consumpt <= 500:
+                    charge = 6
+                else:
+                    charge = 6.50
+                
+                electricity = consumpt * charge
+
+                if t == "home":
+                    demand = 20
+                    service = 5
+                else:
+                    demand = 40
+                    service = 10
+
+                princi = electricity + demand + service
+                tax = 0.05 * princi
+                pay = princi + tax
+
+                present.update(position, p)
+                previous.update(position, pr)
+                register.update(position, t)
+                principal.update(position, princi)
+                vat.update(position, tax)
+                amount.update(position, pay)
+
+                current = meter.head
+                position = 0
+
+                if current is None:
+                    print("None")
+                else:
+                    while current:
+                        print(f"\nMeter No: {meter.get_data(position)}")
+                        print(f"Present: {present.get_data(position)}")
+                        print(f"Previous: {previous.get_data(position)}")
+                        print(f"Register Type: {register.get_data(position)}")
+                        print(f"Principal: {principal.get_data(position)}")
+                        print(f"VAT: {vat.get_data(position)}")
+                        print(f"Total Amount: {amount.get_data(position)}")
+
+                        current = current.next
+                        position += 1
+
+                    print("None")
         elif choice == 4:
-            print("\n--- Displaying All Lists (Top to Bottom) ---")
-            print("Meter Nos:     ", end="")
-            meter.display()
-            print("Present:       ", end="")
-            present.display()
-            print("Previous:      ", end="")
-            previous.display()
-            print("Register Type: ", end="")
-            register.display()
-            print("Principal:     ", end="")
-            principal.display()
-            print("VAT:           ", end="")
-            vat.display()
-            print("Total Amount:  ", end="")
-            amount.display()
+            current = meter.head
+            position = 0
+
+            if current is None:
+                print("None")
+            else:
+                while current:
+                    print(f"\nMeter No: {meter.get_data(position)}")
+                    print(f"Present: {present.get_data(position)}")
+                    print(f"Previous: {previous.get_data(position)}")
+                    print(f"Register Type: {register.get_data(position)}")
+                    print(f"Principal: {principal.get_data(position)}")
+                    print(f"VAT: {vat.get_data(position)}")
+                    print(f"Total Amount: {amount.get_data(position)}")
+
+                    current = current.next
+                    position += 1
+
+                print("None")
         elif choice == 5:
             print("Exited Successfully")
             break
