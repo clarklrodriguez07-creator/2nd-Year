@@ -1,82 +1,230 @@
+
 class Node:
-	"""One item in a singly linked list."""
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-	def __init__(self, value):
-		self.value = value
-		self.next = None
+class Clarkie:
+    def __init__(self):
+        self.head = None
 
+    def insert(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+        else:
+            last = self.head
+            while last.next:
+                last = last.next
+            last.next = new_node
 
-class LinkedList:
-	"""A small linked list with basic operations."""
+    def search(self, key):
+        current = self.head
+        position = 0
+        while current:
+            if current.data == key:
+                return position
+            current = current.next
+            position += 1
+        print(f"Employee ID {key} not found.")
+        return -1
 
-	def __init__(self):
-		self.head = None
+    def get_data(self, position):
+        current = self.head
+        index = 0
+        while current:
+            if index == position:
+                return current.data
+            current = current.next
+            index += 1
+        return None
 
-	def append(self, value):
-		"""Add value to the end of the list."""
-		node = Node(value)
-		if self.head is None:
-			self.head = node
-			return
+    def update(self, position, new_value):
+        current = self.head
+        index = 0
+        while current:
+            if index == position:
+                current.data = new_value
+                return
+            current = current.next
+            index += 1
 
-		current = self.head
-		while current.next is not None:
-			current = current.next
-		current.next = node
-
-	def prepend(self, value):
-		"""Add value to the beginning of the list."""
-		node = Node(value)
-		node.next = self.head
-		self.head = node
-
-	def find(self, value):
-		"""Return True if value is present, otherwise False."""
-		current = self.head
-		while current is not None:
-			if current.value == value:
-				return True
-			current = current.next
-		return False
-
-	def delete(self, value):
-		"""Delete the first matching value; return whether it was found."""
-		if self.head is None:
-			return False
-		if self.head.value == value:
-			self.head = self.head.next
-			return True
-
-		current = self.head
-		while current.next is not None:
-			if current.next.value == value:
-				current.next = current.next.next
-				return True
-			current = current.next
-		return False
-
-	def display(self):
-		"""Print the list in order."""
-		current = self.head
-		values = []
-		while current is not None:
-			values.append(str(current.value))
-			current = current.next
-		print(" -> ".join(values) if values else "(empty)")
+    def display(self):
+        current = self.head
+        if current is None:
+            print("None")
+            return
+        while current:
+            print(current.data)
+            current = current.next
+        print("None")
 
 
-if __name__ == "__main__":
-	numbers = LinkedList()
-	numbers.append(10)
-	numbers.append(20)
-	numbers.prepend(5)
+def main():
+    empid = Clarkie()
+    empname = Clarkie()
+    hoursworked = Clarkie()
+    grossincome = Clarkie()
+    deduction = Clarkie()
+    net = Clarkie()
 
-	print("List:", end=" ")
-	numbers.display()  # 5 -> 10 -> 20
-	print("Contains 10:", numbers.find(10))
-	numbers.delete(10)
-	print("After deleting 10:", end=" ")
-	numbers.display()  # 5 -> 20
+    while True:
+        print("\nMenu:\nA. Insert Record\nB. Search Record\nC. Update Record\nD. Display\nE. Exit")
+        choice = input("\nChoose: ").upper().strip()
 
-#activity making tom
-#linklist practice today no need for practice in vs
+        if choice == "A":
+            eid = int(input("Enter Employee ID: "))
+            name = input("Enter Employee Name: ")
+            hours = float(input("Enter Hours Worked: "))
+
+            if hours <= 80:
+                regular = hours
+                overtime = 0
+            else:
+                regular = 80
+                overtime = hours - 80
+
+            bonus = 0
+            if hours > 85:
+                bonus = 1000
+
+            regular_pay = regular * 65.5
+            overtime_pay = overtime * (65.5 * 1.5)
+
+            gross = regular_pay + overtime_pay + bonus
+
+            if gross <= 3000:
+                federal = gross * 0.10
+                state = gross * 0.05
+            else:
+                federal = gross * 0.12
+                state = gross * 0.06
+
+            social = gross * 0.062
+            medicare = gross * 0.0145
+            insurance = 400
+
+            deduct = federal + state + social + medicare + insurance
+            total = gross - deduct
+
+            empid.insert(eid)
+            empname.insert(name)
+            hoursworked.insert(hours)
+            grossincome.insert(gross)
+            deduction.insert(deduct)
+            net.insert(total)
+
+            print("\n--- Inserted Record ---")
+            print(f"EmpId: {eid}")
+            print(f"EmpName: {name}")
+            print(f"HoursWorked: {hours}")
+            print(f"GrossIncome: {gross:.2f}")
+            print(f"Deduction: {deduct:.2f}")
+            print(f"Net: {total:.2f}")
+            print("Inserted Successfully")
+
+        elif choice == "B":
+            num = int(input("Search Employee ID: "))
+            position = empid.search(num)
+
+            if position != -1:
+                print("\n--- Search Record ---")
+                print(f"EmpId: {empid.get_data(position)}")
+                print(f"EmpName: {empname.get_data(position)}")
+                print(f"HoursWorked: {hoursworked.get_data(position)}")
+                print(f"GrossIncome: {grossincome.get_data(position):.2f}")
+                print(f"Deduction: {deduction.get_data(position):.2f}")
+                print(f"Net: {net.get_data(position):.2f}")
+                print("None")
+
+        elif choice == "C":
+            num = int(input("Enter Employee ID to update: "))
+            position = empid.search(num)
+
+            if position != -1:
+                name = input("Enter New Employee Name: ")
+                hours = float(input("Enter New Hours Worked: "))
+
+                if hours <= 80:
+                    regular = hours
+                    overtime = 0
+                else:
+                    regular = 80
+                    overtime = hours - 80
+
+                bonus = 0
+                if hours > 85:
+                    bonus = 1000
+
+                regular_pay = regular * 65.5
+                overtime_pay = overtime * (65.5 * 1.5)
+
+                gross = regular_pay + overtime_pay + bonus
+
+                if gross <= 3000:
+                    federal = gross * 0.10
+                    state = gross * 0.05
+                else:
+                    federal = gross * 0.12
+                    state = gross * 0.06
+
+                social = gross * 0.062
+                medicare = gross * 0.0145
+                insurance = 400
+
+                deduct = federal + state + social + medicare + insurance
+                total = gross - deduct
+
+                empname.update(position, name)
+                hoursworked.update(position, hours)
+                grossincome.update(position, gross)
+                deduction.update(position, deduct)
+                net.update(position, total)
+
+                print("\n--- Displaying All Updated Records ---")
+
+                current = empid.head
+                position = 0
+
+                while current:
+                    print(f"\nEmpId: {empid.get_data(position)}")
+                    print(f"EmpName: {empname.get_data(position)}")
+                    print(f"HoursWorked: {hoursworked.get_data(position)}")
+                    print(f"GrossIncome: {grossincome.get_data(position):.2f}")
+                    print(f"Deduction: {deduction.get_data(position):.2f}")
+                    print(f"Net: {net.get_data(position):.2f}")
+
+                    current = current.next
+                    position += 1
+                print("None")
+
+        elif choice == "D":
+            print("\n--- Displaying All Records ---")
+
+            current = empid.head
+            position = 0
+
+            if current is None:
+                print("None")
+            else:
+                while current:
+                    print(f"\nEmpId: {empid.get_data(position)}")
+                    print(f"EmpName: {empname.get_data(position)}")
+                    print(f"HoursWorked: {hoursworked.get_data(position)}")
+                    print(f"GrossIncome: {grossincome.get_data(position):.2f}")
+                    print(f"Deduction: {deduction.get_data(position):.2f}")
+                    print(f"Net: {net.get_data(position):.2f}")
+
+                    current = current.next
+                    position += 1
+
+                print("None")
+
+        elif choice == "E":
+            print("Exited Successfully")
+            break
+
+        else:
+            print("Invalid Input")
+
+main()
