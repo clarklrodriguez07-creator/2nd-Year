@@ -1,5 +1,4 @@
-
-class Node:
+    class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
@@ -48,6 +47,40 @@ class Clarkie:
                 return
             current = current.next
             index += 1
+    
+    def delete(self, key):
+        current = self.head
+        prev = None
+        
+        if current and current.data == key:
+            self.head = current.next
+            print(f"Deleted {key}")
+            return
+
+        while current and current.data != key:
+            prev = current
+            current = current.next
+
+        if current is None:
+            print(f"{key} is not found")
+            return
+        
+        prev.next = current.next
+        print(f"Deleted {key}")
+
+    def delete_at_position(self, position):
+        if self.head is None:
+            return
+        if position == 0:
+            self.head = self.head.next
+            return
+        current = self.head
+        index = 0
+        while current and index < position -1:
+            current = current.next
+            index +=1
+        if current and current.next:
+            current.next = current.next.next
 
     def display(self):
         current = self.head
