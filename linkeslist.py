@@ -51,22 +51,23 @@ class Clarkie:
     def delete(self, key):
         current = self.head
         prev = None
-        
+        position = 0
+
         if current and current.data == key:
             self.head = current.next
-            print(f"Deleted {key}")
-            return
+            return position
 
         while current and current.data != key:
             prev = current
             current = current.next
+            position += 1
 
         if current is None:
             print(f"{key} is not found")
-            return
+            return -1
         
         prev.next = current.next
-        print(f"Deleted {key}")
+        return position
 
     def delete_at_position(self, position):
         if self.head is None:
@@ -102,7 +103,7 @@ def main():
     net = Clarkie()
 
     while True:
-        print("\nMenu:\nA. Insert Record\nB. Search Record\nC. Update Record\nD. Display\nE. Exit")
+        print("\nMenu:\nA. Insert Record\nB. Search Record\nC. Update Record\nD. Display\nE. Delete Record\nF. Delete at Position\nG. Exit")
         choice = input("\nChoose: ").upper().strip()
 
         if choice == "A":
@@ -254,6 +255,34 @@ def main():
                 print("None")
 
         elif choice == "E":
+            num = int(input("Enter Employee ID to delete: "))
+            position = empid.delete(num)
+
+            if position != -1:
+                empname.delete(empname.get_data(position))
+                hoursworked.delete(hoursworked.get_data(position))
+                grossincome.delete(grossincome.get_data(position))
+                deduction.delete(deduction.get_data(position))
+                net.delete(net.get_data(position))
+
+                print("Employee Record Deleted Successfully!")
+
+        elif choice == "F":
+            position = int(input("Enter index to delete: "))
+
+            if empid.get_data(position) is None:
+                print("Invalid index. Employee record not found.")
+            else:
+                empid.delete_at_position(position)
+                empname.delete_at_position(position)
+                hoursworked.delete_at_position(position)
+                grossincome.delete_at_position(position)
+                deduction.delete_at_position(position)
+                net.delete_at_position(position)
+
+                print("Employee Record Deleted Successfully!")
+
+        elif choice == "G":
             print("Exited Successfully")
             break
 
