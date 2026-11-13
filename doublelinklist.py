@@ -4,7 +4,6 @@ class Node:
         self.prev = None
         self.next = None
 
-
 class Clark:
     def __init__(self):
         self.head = None 
@@ -58,7 +57,28 @@ class Clark:
                 return position
             current = current.next
             position += 1
+        print(f"{key} not found.")
         return -1
+
+    def get_data(self, position):
+        current = self.head
+        index = 0
+        while current:
+            if index == position:
+                return current.data
+            current = current.next
+            index += 1
+        return None
+
+    def update(self, position, new_value):
+        current = self.head
+        index = 0
+        while current:
+            if index == position:
+                current.data = new_value
+                return
+            current = current.next
+            index += 1
 
     def display(self):
         current = self.head
@@ -83,8 +103,10 @@ def main():
         print("1. Insert at the End")
         print("2. Insert at the Beginning")
         print("3. Insert at a Specific Position")
-        print("4. Display List")
-        print("5. Exit")
+        print("4. Search")
+        print("5. Update")
+        print("6. Display List")
+        print("7. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
@@ -176,7 +198,7 @@ def main():
             Empid.display() ; EmpName.display() ; HoursWorked.display() ; GrossIncome.display() ; Deduction.display() ; Net.display()       
         
         elif choice == 3:
-            target = int(input("Insert BEFORE which existing ID? "))
+            target = int(input("Insert Before which existing ID? "))
             pos = Empid.search(target)
             if pos == -1:
                 print("Target ID not found.")
@@ -225,6 +247,71 @@ def main():
                 Empid.display() ; EmpName.display() ; HoursWorked.display() ; GrossIncome.display() ; Deduction.display() ; Net.display()
 
         elif choice == 4:
+            num = int(input("Search EmpID: "))
+            position = Empid.search(num)
+
+            if position != -1:
+                print("\n--- Search Record ---")
+                print(f"EmpId: {Empid.get_data(position)}")
+                print(f"EmpName: {EmpName.get_data(position)}")
+                print(f"HoursWorked: {HoursWorked.get_data(position)}")
+                print(f"GrossIncome: {GrossIncome.get_data(position):.2f}")
+                print(f"Deduction: {Deduction.get_data(position):.2f}")
+                print(f"Net: {Net.get_data(position):.2f}")
+
+        elif choice == 5:
+            num = int(input("Enter Employee ID to update: "))
+            position = Empid.search(num)
+
+            if position != -1:
+                name = input("Enter New Employee Name: ")
+                hours = float(input("Enter New Hours Worked: "))
+
+                if hours <= 80:
+                    regular = hours
+                    overtime = 0
+                else:
+                    regular = 80
+                    overtime = hours - 80
+
+                bonus = 0
+                if hours > 85:
+                    bonus = 1000
+
+                regular_pay = regular * 65.5
+                overtime_pay = overtime * (65.5 * 1.5)
+
+                gross = regular_pay + overtime_pay + bonus
+
+                if gross <= 3000:
+                    federal = gross * 0.10
+                    state = gross * 0.05
+                else:
+                    federal = gross * 0.12
+                    state = gross * 0.06
+
+                social = gross * 0.062
+                medicare = gross * 0.0145
+                insurance = 400
+
+                deduct = federal + state + social + medicare + insurance
+                total = gross - deduct
+
+                EmpName.update(position, name)
+                HoursWorked.update(position, hours)
+                GrossIncome.update(position, gross)
+                Deduction.update(position, deduct)
+                Net.update(position, total)
+
+                print("\nUpdated Values")
+                print(f"Employee ID: {Empid.get_data(position)}")
+                print(f"EmpName: {name}")
+                print(f"HoursWorked: {hours}")
+                print(f"Gross Income: {gross}")
+                print(f"Deduction: {deduct}")
+                print(f"Net: {total}")
+
+        elif choice == 6:
             print("\n--- Displaying Records ---")
             print("Employee IDs:")
             Empid.display()
@@ -239,7 +326,7 @@ def main():
             print("Net Income:")
             Net.display()
 
-        elif choice == 5:
+        elif choice == 7:
             print("Exited Successfully.")
             break
 
