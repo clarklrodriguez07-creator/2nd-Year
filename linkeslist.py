@@ -93,7 +93,6 @@ class Clarkie:
             current = current.next
         print("None")
 
-
 def main():
     empid = Clarkie()
     empname = Clarkie()
