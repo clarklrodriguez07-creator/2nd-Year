@@ -12,42 +12,42 @@ class Clark:
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
-            return
-        new_node.next = self.head
-        self.head.prev = new_node
-        self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
     def insert(self, data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
-            return
-        last = self.head
-        while last.next:
-            last = last.next
-        last.next = new_node
-        new_node.prev = last
+        else:
+            last = self.head
+            while last.next:
+                last = last.next
+            last.next = new_node
+            new_node.prev = last
 
     def insert_at_position(self, index, data):
         if index < 0:
             raise IndexError("Index out of bounds.")
         if index == 0 or self.head is None:
             self.insert_front(data)
-            return
-        cur = self.head
-        pos = 0
-        while cur and pos < index:
-            cur = cur.next
-            pos += 1
-        if cur is None:
-            self.insert(data)
-            return
-        new_node = Node(data)
-        prev_node = cur.prev
-        new_node.prev = prev_node
-        new_node.next = cur
-        prev_node.next = new_node
-        cur.prev = new_node
+        else:
+            current = self.head
+            position = 0
+            while current and position < index:
+                current = current.next
+                position += 1
+            if current is None:
+                self.insert(data)
+            else:
+                new_node = Node(data)
+                prev_node = current.prev
+                new_node.prev = prev_node
+                new_node.next = current
+                prev_node.next = new_node
+                current.prev = new_node
 
     def search(self, key):
         current = self.head
@@ -199,10 +199,8 @@ def main():
         
         elif choice == 3:
             target = int(input("Insert Before which existing ID? "))
-            pos = Empid.search(target)
-            if pos == -1:
-                print("Target ID not found.")
-            else:
+            position = Empid.search(target)
+            if position != -1:
                 id = int(input("Enter Employee ID: "))
                 name = input("Enter Employee Name: ")
                 hours = float(input("Enter Hours Worked: "))
@@ -237,12 +235,12 @@ def main():
                 deduct = federal + state + social + medicare + insurance
                 total = gross - deduct
 
-                Empid.insert_at_position(pos, id)
-                EmpName.insert_at_position(pos, name)
-                HoursWorked.insert_at_position(pos, hours)
-                GrossIncome.insert_at_position(pos, gross)
-                Deduction.insert_at_position(pos, deduct)
-                Net.insert_at_position(pos, total)
+                Empid.insert_at_position(position, id)
+                EmpName.insert_at_position(position, name)
+                HoursWorked.insert_at_position(position, hours)
+                GrossIncome.insert_at_position(position, gross)
+                Deduction.insert_at_position(position, deduct)
+                Net.insert_at_position(position, total)
 
                 Empid.display() ; EmpName.display() ; HoursWorked.display() ; GrossIncome.display() ; Deduction.display() ; Net.display()
 
