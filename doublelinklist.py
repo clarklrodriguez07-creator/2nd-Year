@@ -8,15 +8,6 @@ class Clark:
     def __init__(self):
         self.head = None 
 
-    def insert_front(self, data):
-        new_node = Node(data)
-        if self.head is None:
-            self.head = new_node
-        else:
-            new_node.next = self.head
-            self.head.prev = new_node
-            self.head = new_node
-
     def insert(self, data):
         new_node = Node(data)
         if self.head is None:
@@ -27,6 +18,15 @@ class Clark:
                 last = last.next
             last.next = new_node
             new_node.prev = last
+
+    def insert_front(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
 
     def insert_at_position(self, index, data):
         if index < 0:
@@ -80,6 +80,48 @@ class Clark:
             current = current.next
             index += 1
 
+    def delete_beginning(self):
+        if self.head is None:
+            return False
+        nxt = self.head.next
+        self.head = nxt
+        if self.head:
+            self.head.prev = None
+        return True            
+
+    def delete(self, key):
+        position = self.search(key)
+
+        if position != -1:
+            self.delete_at_position(position)
+
+        return position
+
+    def delete_at_position(self, position):
+        if self.head is None or position < 0:
+            return
+
+        if position == 0:
+            self.head = self.head.next
+            if self.head:
+                self.head.prev = None
+            return
+
+        current = self.head
+        index = 0
+
+        while current and index < position:
+            current = current.next
+            index += 1
+
+        if current is None:
+            return
+
+        current.prev.next = current.next
+
+        if current.next:
+            current.next.prev = current.prev
+            
     def display(self):
         current = self.head
         if current is None:
@@ -88,6 +130,18 @@ class Clark:
         while current:
             print(current.data, end=" <-> ")
             current = current.next
+        print("None")
+
+    def display_backward(self):
+        if self.head is None:
+            print("The list is empty.")
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.prev
         print("None")
 
 def main():
@@ -105,53 +159,60 @@ def main():
         print("3. Insert at a Specific Position")
         print("4. Search")
         print("5. Update")
-        print("6. Display List")
-        print("7. Exit")
+        print("6. Delete at Beginning")
+        print("7. Delete by Key")
+        print("8. Delete  previous of id")
+        print("9. Display forward")
+        print("10. Display backward")
+        print("11. Exit")
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
             id = int(input("Enter Employee ID: "))
-            name = input("Enter Employee Name: ")
-            hours = float(input("Enter Hours Worked: "))
+            if Empid.search(id) != -1:
+                print("Employee ID already exists. Please enter a unique ID.")
+            else: 
+                name = input("Enter Employee Name: ")
+                hours = float(input("Enter Hours Worked: "))
 
-            if hours <= 80:
-                regular = hours
-                overtime = 0
-            else:
-                regular = 80
-                overtime = hours - 80
+                if hours <= 80:
+                    regular = hours
+                    overtime = 0
+                else:
+                    regular = 80
+                    overtime = hours - 80
 
-            bonus = 0
-            if hours > 85:
-                bonus = 1000
+                bonus = 0
+                if hours > 85:
+                    bonus = 1000
 
-            regular_pay = regular * 65.5
-            overtime_pay = overtime * (65.5 * 1.5)
+                regular_pay = regular * 65.5
+                overtime_pay = overtime * (65.5 * 1.5)
 
-            gross = regular_pay + overtime_pay + bonus
+                gross = regular_pay + overtime_pay + bonus
 
-            if gross <= 3000:
-                federal = gross * 0.10
-                state = gross * 0.05
-            else:
-                federal = gross * 0.12
-                state = gross * 0.06
+                if gross <= 3000:
+                    federal = gross * 0.10
+                    state = gross * 0.05
+                else:
+                    federal = gross * 0.12
+                    state = gross * 0.06
 
-            social = gross * 0.062
-            medicare = gross * 0.0145
-            insurance = 400
+                social = gross * 0.062
+                medicare = gross * 0.0145
+                insurance = 400
 
-            deduct = federal + state + social + medicare + insurance
-            total = gross - deduct    
+                deduct = federal + state + social + medicare + insurance
+                total = gross - deduct    
 
-            Empid.insert(id)
-            EmpName.insert(name)
-            HoursWorked.insert(hours)
-            GrossIncome.insert(gross)
-            Deduction.insert(deduct)
-            Net.insert(total)
+                Empid.insert(id)
+                EmpName.insert(name)
+                HoursWorked.insert(hours)
+                GrossIncome.insert(gross)
+                Deduction.insert(deduct)
+                Net.insert(total)
 
-            Empid.display() ; EmpName.display() ; HoursWorked.display() ; GrossIncome.display() ; Deduction.display() ; Net.display()       
+                Empid.display() ; EmpName.display() ; HoursWorked.display() ; GrossIncome.display() ; Deduction.display() ; Net.display()       
 
         elif choice == 2:
             id = int(input("Enter Employee ID: "))
@@ -310,7 +371,50 @@ def main():
                 print(f"Net: {total}")
 
         elif choice == 6:
-            print("\n--- Displaying Records ---")
+            if Empid.delete_beginning():
+                EmpName.delete_beginning()
+                HoursWorked.delete_beginning()
+                GrossIncome.delete_beginning()
+                Deduction.delete_beginning()
+                Net.delete_beginning()
+
+                print("Employee Record Deleted Successfully!")
+            else:
+                print("Lists are empty.")
+        
+        elif choice == 7:
+            num = int(input("Enter Employee ID to delete: "))
+            position = Empid.delete(num)
+    
+            if position != -1:
+                EmpName.delete_at_position(position)
+                HoursWorked.delete_at_position(position)
+                GrossIncome.delete_at_position(position)
+                Deduction.delete_at_position(position)
+                Net.delete_at_position(position)
+
+                print("Employee Record Deleted Successfully!")
+            
+        elif choice == 8:
+            num = int(input("Enter ID whose previous node will be deleted: "))
+            position = Empid.search(num)
+
+            if position == -1:
+                print("Employee ID not found.")
+            elif position == 0:
+                print("No previous node to delete.")
+            else:
+                Empid.delete_at_position(position - 1)
+                EmpName.delete_at_position(position - 1)
+                HoursWorked.delete_at_position(position - 1)
+                GrossIncome.delete_at_position(position - 1)
+                Deduction.delete_at_position(position - 1)
+                Net.delete_at_position(position - 1)
+
+                print("Previous Employee Record Deleted Successfully!")    
+
+        elif choice == 9:
+            print("\n--- Displaying Records Forward ---")
             print("Employee IDs:")
             Empid.display()
             print("Employee Names:")
@@ -324,7 +428,22 @@ def main():
             print("Net Income:")
             Net.display()
 
-        elif choice == 7:
+        elif choice == 10:
+            print("\n--- Displaying Records Backward ---")
+            print("Employee IDs:")
+            Empid.display_backward()
+            print("Employee Names:")
+            EmpName.display_backward()
+            print("Hours Worked:")
+            HoursWorked.display_backward()
+            print("Gross Income:")
+            GrossIncome.display_backward()
+            print("Deductions:")
+            Deduction.display_backward()
+            print("Net Income:")
+            Net.display_backward()
+
+        elif choice == 11:
             print("Exited Successfully.")
             break
 
